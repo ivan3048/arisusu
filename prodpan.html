@@ -1,0 +1,37 @@
+<section class="products-grid">
+    <!-- Producto Ejemplo -->
+    <div class="product-card">
+        <div class="image-container">
+            <img src="bigote.jpg" alt="Bigote">
+            <button class="add-to-cart">Añadir al carrito</button>
+        </div>
+        <h3>Bigote</h3>
+        <p>$30.00</p>
+    </div>
+    
+    <!-- Repite esta estructura para cada producto -->
+</section>
+
+<style>
+    .products-grid { 
+        display: grid; 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 20px; 
+        padding: 50px 8%; 
+    }
+    .product-card { text-align: center; }
+    
+    /* Contenedor de imagen con efecto hover */
+    .image-container { position: relative; overflow: hidden; cursor: pointer; }
+    .image-container img { width: 100%; transition: transform 0.3s; }
+    
+    .add-to-cart { 
+        position: absolute; bottom: 0; left: 0; width: 100%; 
+        background: #d4af37; color: white; border: none; 
+        padding: 15px; transform: translateY(100%); transition: transform 0.3s; 
+        font-weight: bold; cursor: pointer;
+    }
+    
+    .image-container:hover .add-to-cart { transform: translateY(0); }
+    .image-container:hover img { transform: scale(1.05); }
+</style>
