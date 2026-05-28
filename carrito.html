@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito - Arienzo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        
+        /* Header Arienzo */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fff; border-bottom: 1px solid #eee; }
+        .logo { font-weight: bold; font-size: 1.5rem; color: #333; }
+        nav { display: flex; gap: 30px; align-items: center; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; cursor: pointer; }
+
+        /* Estilos página carrito */
+        .cart-container { padding: 50px 8%; display: flex; gap: 50px; }
+        .cart-items { flex: 2; }
+        .cart-summary { flex: 1; border: 1px solid #ddd; padding: 20px; height: fit-content; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; padding-bottom: 15px; border-bottom: 1px solid #ddd; }
+        td { padding: 20px 0; border-bottom: 1px solid #ddd; }
+        
+        .btn-checkout { width: 100%; padding: 15px; background: #d4af37; color: white; border: none; cursor: pointer; font-weight: bold; margin-top: 20px; }
+        .btn-checkout:hover { background-color: #b8962f; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Arienzo</div>
+    <nav>
+        <a href="index.html" class="nav-link">INICIO</a>
+    </nav>
+</header>
+
+<main class="cart-container">
+    <div class="cart-items">
+        <table>
+            <thead>
+                <tr>
+                    <th>PRODUCTO</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="cart-table-body">
+                </tbody>
+        </table>
+    </div>
+    
+    <div class="cart-summary">
+        <h3>TOTAL DEL CARRITO</h3>
+        <p style="margin: 20px 0;">Envío gratuito: <strong>GRATIS</strong></p>
+        <hr>
+        <p style="margin: 20px 0; font-size: 1.2rem;">Total estimado: <strong id="total-price">$0.00</strong></p>
+        <button class="btn-checkout">Proceder al pago</button>
+    </div>
+</main>
+
+<script>
+    function cargarCarrito() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const tbody = document.getElementById('cart-table-body');
+        const totalDisplay = document.getElementById('total-price');
+        let total = 0;
+        
+        tbody.innerHTML = '';
+
+        carrito.forEach((item) => {
+            const subtotal = parseFloat(item.precio) * parseInt(item.cantidad);
+            total += subtotal;
+            tbody.innerHTML += `
+                <tr>
+                    <td>${item.nombre} <br> <small>Cantidad: ${item.cantidad}</small></td>
+                    <td>$${subtotal.toFixed(2)}</td>
+                </tr>
+            `;
+        });
+        
+        totalDisplay.innerText = '$' + total.toFixed(2);
+    }
+
+    cargarCarrito();
+</script>
+
+</body>
+</html>
