@@ -7,10 +7,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
         
         /* Header Arienzo */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fff; border-bottom: 1px solid #eee; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fff; border-bottom: 1px solid #eee; position: relative; }
         .logo { font-weight: bold; font-size: 1.5rem; color: #333; }
-        nav { display: flex; gap: 30px; align-items: center; }
-        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; cursor: pointer; }
+        
+        /* Botón de menú */
+        .menu-btn { cursor: pointer; font-size: 1.8rem; font-weight: bold; }
+
+        /* Sidebar */
+        .sidebar { height: 100%; width: 0; position: fixed; z-index: 100; top: 0; right: 0; background: #fff; overflow-x: hidden; transition: 0.3s; border-left: 1px solid #eee; padding-top: 60px; box-shadow: -2px 0 5px rgba(0,0,0,0.1); }
+        .sidebar .close-btn { position: absolute; top: 20px; left: 20px; font-size: 2rem; cursor: pointer; color: #333; }
+        .sidebar a { display: block; padding: 20px 40px; text-decoration: none; color: #333; font-size: 1.2rem; transition: 0.2s; }
+        .sidebar a:hover { background: #f9f9f9; }
 
         /* Estilos página carrito */
         .cart-container { padding: 50px 8%; display: flex; gap: 50px; }
@@ -29,10 +36,13 @@
 
 <header>
     <div class="logo">Arienzo</div>
-    <nav>
-        <a href="index.html" class="nav-link">INICIO</a>
-    </nav>
+    <div class="menu-btn" onclick="openSidebar()">☰</div>
 </header>
+
+<div id="sidebar" class="sidebar">
+    <div class="close-btn" onclick="closeSidebar()">&times;</div>
+    <a href="index.html">INICIO</a>
+</div>
 
 <main class="cart-container">
     <div class="cart-items">
@@ -44,7 +54,7 @@
                 </tr>
             </thead>
             <tbody id="cart-table-body">
-                </tbody>
+            </tbody>
         </table>
     </div>
     
@@ -58,6 +68,9 @@
 </main>
 
 <script>
+    function openSidebar() { document.getElementById("sidebar").style.width = "250px"; }
+    function closeSidebar() { document.getElementById("sidebar").style.width = "0"; }
+
     function cargarCarrito() {
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const tbody = document.getElementById('cart-table-body');
