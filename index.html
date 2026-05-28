@@ -6,16 +6,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
         
         /* Header Arienzo */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fff; border-bottom: 1px solid #eee; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fff; border-bottom: 1px solid #eee; position: relative; }
         .logo { font-weight: bold; font-size: 1.5rem; color: #333; }
-        nav { display: flex; gap: 30px; align-items: center; }
-        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; cursor: pointer; }
+        
+        /* Botón de menú hamburguesa */
+        .menu-btn { cursor: pointer; font-size: 1.8rem; font-weight: bold; }
 
-        .dropdown { position: relative; }
-        .submenu { display: none; position: absolute; top: 100%; left: 0; background: #4a3426; min-width: 180px; padding: 10px 0; z-index: 10; }
-        .dropdown:hover .submenu { display: block; }
-        .submenu a { display: block; color: white; padding: 10px; text-decoration: none; font-size: 0.9rem; }
-        .submenu a:hover { background: #6b4c37; }
+        /* Barra lateral (Sidebar) */
+        .sidebar { height: 100%; width: 0; position: fixed; z-index: 100; top: 0; right: 0; background: #fff; overflow-x: hidden; transition: 0.3s; border-left: 1px solid #eee; padding-top: 60px; box-shadow: -2px 0 5px rgba(0,0,0,0.1); }
+        .sidebar .close-btn { position: absolute; top: 20px; left: 20px; font-size: 2rem; cursor: pointer; color: #333; }
+        .sidebar a { display: block; padding: 20px 40px; text-decoration: none; color: #333; font-size: 1.2rem; transition: 0.2s; }
+        .sidebar a:hover { background: #f9f9f9; }
 
         /* Hero */
         .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('fondo.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 10%; }
@@ -39,248 +40,24 @@
 
 <header>
     <div class="logo">Arienzo</div>
-    <nav>
-        <a href="index.html" class="nav-link">INICIO</a>
-        <a href="carrito.html" class="nav-link">Carrito</a>
-        <div class="dropdown">
-          
-            </div>
-        </div>
-    </nav>
+    <div class="menu-btn" onclick="openSidebar()">☰</div>
 </header>
+
+<div id="sidebar" class="sidebar">
+    <div class="close-btn" onclick="closeSidebar()">&times;</div>
+    <a href="index.html">INICIO</a>
+    <a href="carrito.html">Carrito</a>
+</div>
 
 <section class="hero">
     <div class="hero-tag">ENDULZANDO TUS MOMENTOS DESDE 2010</div>
     <h1>El Placer De Compartir Un Postre Inolvidable.</h1>
-    
 </section>
-
-<section class="promo-banner">
-    <div>
-        <h2>20% DE DESCUENTO!!</h2>
-        <p>Con el código <strong>ARISUSU</strong> aplica un %20 de descuento en compras arriba de $300!!</p>
-    </div>
-</section>
-
-<section class="full-hero-slider">
-    <div class="slides">
-        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('panque.png');">
-            <h1>Frescura y Dulzura Natural</h1>
-            <p>Gelatinas artesanales con fruta de temporada.</p>
-        </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('pastel.jpg');">
-            <h1>Sabor Que Enamora al Instante</h1>
-            <p>Pasteles de textura cremosa e ingredientes premium.</p>
-        </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('pie.png');">
-            <h1>El Toque Refrescante Ideal</h1>
-            <p>Sodas italianas artesanales, burbujeantes y únicas.</p>
-        </div>
-    </div>
-    <button class="prev" onclick="moveSlide(-1)">❮</button>
-    <button class="next" onclick="moveSlide(1)">❯</button>
-</section>
-<<!-- Sección: Los más vendidos -->
-<section class="best-sellers">
-    <h2>Los mas vendidos!</h2>
-    <div class="product-grid">
-        <!-- Producto 1 -->
-        <div class="product-card">
-            <img src="conchaprod.png" alt="Concha rellena">
-            <h3>Concha rellena</h3>
-            <p>$65.00</p>
-            <button class="btn-view" onclick="window.location.href='producto1.html'">VER PRODUCTO</button>
-        </div>
-        <!-- Producto 2 -->
-        <div class="product-card">
-            <img src="mokita.png" alt="Mini mokita">
-            <h3>Mini mokita</h3>
-            <p>$75.00</p>
-            <button class="btn-view" onclick="window.location.href='mokita.html'">VER PRODUCTO</button>
-        </div>
-        <!-- Producto 3 -->
-        <div class="product-card">
-            <img src="panque.png" alt="Panque de nuez">
-            <h3>Panque de nuez</h3>
-            <p>$35.00</p>
-            <button class="btn-view" onclick="window.location.href='producto3.html'">VER PRODUCTO</button>
-        </div>
-        <!-- Producto 4 -->
-        <div class="product-card">
-            <img src="pastelor.jpg" alt="Pastel de Oreo">
-            <h3>Pastel de Oreo</h3>
-            <p>$45.00 – $780.00</p>
-            <button class="btn-view" onclick="window.location.href='producto4.html'">VER PRODUCTO</button>
-        </div>
-    </div>
-</section>
-
-<style>
-    .best-sellers { padding: 60px 8%; background-color: #fff; text-align: center; }
-    .best-sellers h2 { margin-bottom: 40px; color: #333; font-size: 2rem; }
-    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .product-card { border: 1px solid #eee; padding: 15px; text-align: center; }
-    .product-card img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; }
-    .product-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
-    
-    /* Estilo del nuevo botón */
-    .btn-view { 
-        padding: 10px 20px; border: none; cursor: pointer; 
-        background-color: #d4af37; color: #fff; font-weight: bold; width: 100%;
-        transition: background 0.3s;
-    }
-    .btn-view:hover { background-color: #b8962f; }
-</style>
-
-<style>
-    .best-sellers { padding: 60px 8%; background-color: #fff; text-align: center; }
-    .best-sellers h2 { margin-bottom: 40px; color: #333; font-size: 2rem; }
-    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .product-card { border: 1px solid #eee; padding: 15px; text-align: center; }
-    .product-card img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; }
-    .product-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
-    .btn-add, .btn-options { 
-        padding: 10px 20px; border: none; cursor: pointer; 
-        background-color: #d4af37; color: #fff; font-weight: bold; width: 100%;
-    }
-</style>
 
 <script>
-    let current = 0;
-    const slides = document.querySelectorAll('.slide');
-    function moveSlide(n) {
-        slides[current].classList.remove('active');
-        current = (current + n + slides.length) % slides.length;
-        slides[current].classList.add('active');
-    }
-    setInterval(() => moveSlide(1), 5000);
-
+    function openSidebar() { document.getElementById("sidebar").style.width = "250px"; }
+    function closeSidebar() { document.getElementById("sidebar").style.width = "0"; }
 </script>
 
-<style>
-    .categories-section { padding: 50px 8%; background-color: #3e2723; }
-    .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-    .category-item { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-    .icon-box { background-color: #a1887f; padding: 20px; border-radius: 8px; width: 120px; height: 120px; display: flex; justify-content: center; align-items: center; }
-    .icon-box img { width: 80px; }
-    .btn-category { padding: 10px 20px; background-color: #d4af37; color: #fff; border: none; font-weight: bold; cursor: pointer; }
-</style>
-
-<section class="oven-to-table">
-    <h2 class="section-title">Del Horno a tu Mesa</h2>
-    <div class="product-grid-2x2">
-        <!-- Producto 1: Bigote -->
-        <div class="product-card">
-            <img src="bigote.png" alt="Bigote">
-            <h3>Bigote</h3>
-            <p>$30.00</p>
-            <button class="btn-action" onclick="window.location.href='bigote.html'">VER PRODUCTO</button>
-        </div>
-
-        <!-- Producto 2: Concha -->
-        <div class="product-card">
-            <img src="strudell.jpg" alt="Strudll">
-            <h3>Strudell</h3>
-            <p>$30.00</p>
-            <button class="btn-action" onclick="window.location.href='strudell.html'">VER PRODUCTO</button>
-        </div>
-
-        <!-- Producto 3: Concha rellena -->
-        <div class="product-card">
-            <img src="trufas.jpg" alt="Trufa">
-            <h3>Trufa</h3>
-            <p>$65.00</p>
-            <button class="btn-action" onclick="window.location.href='trufa.html'">VER PRODUCTO</button>
-        </div>
-
-        <!-- Producto 4: Pan de muerto -->
-        <div class="product-card">
-            <img src="panm.png" alt="Pan de muerto">
-            <h3>Pan de muerto</h3>
-            <p>$35.00</p>
-            <button class="btn-action" onclick="window.location.href='panm.html'">VER PRODUCTO</button>
-        </div>
-    </div>
-</section>
-
-<style>
-    .oven-to-table { padding: 50px 8%; background-color: #f5f0e1; }
-    .section-title { margin-bottom: 30px; color: #8d6e63; font-size: 1.8rem; }
-    .product-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .product-card { background: white; padding: 20px; text-align: center; border: 1px solid #ddd; }
-    .product-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px; }
-    .btn-action { 
-        width: 100%; padding: 10px; background-color: #d4af37; 
-        color: white; border: none; font-weight: bold; cursor: pointer;
-        transition: background 0.3s;
-    }
-    .btn-action:hover { background-color: #b8962f; }
-</style>
-<style>
-    .oven-to-table { padding: 50px 8%; background-color: #f5f0e1; /* Color crema de fondo */ }
-    .section-title { margin-bottom: 30px; color: #8d6e63; font-size: 1.8rem; }
-    .product-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .product-card { background: white; padding: 20px; text-align: center; border: 1px solid #ddd; }
-    .product-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px; }
-    .btn-action { width: 100%; padding: 10px; background-color: #d4af37; color: white; border: none; font-weight: bold; cursor: pointer; }
-</style>
 </body>
-<!-- Pie de página: Arienzo -->
-<footer class="footer-arienzo">
-    <!-- Redes Sociales -->
-    <div class="social-icons">
-        <a href="https://www.facebook.com/arienzopasteleriaycafeteria/photos/">FB</a>
-        <a href="https://www.instagram.com/arienzo.pasteleria.cafeteria">IG</a>
-    </div>
-
-    <div class="footer-content">
-        <!-- Mapa -->
-       <div class="map-section">
-    <a href="https://maps.app.goo.gl/dLizQHdKbsstwTkk7" target="_blank">
-        <img src="mapa.png" alt="Mapa de ubicación" style="width: 100%; border: 1px solid #ddd; display: block;">
-    </a>
-    <p>Ven a visitarnos!</p>
-</div>
-
-        <!-- Horarios y Contacto -->
-        <div class="info-section">
-            <table class="hours-table">
-                <tr><td>Viernes-Domingo</td><td>11:30a.m.–2:30p.m.</td></tr>
-                <tr><td>Lunes-Jueves</td><td>10a.m.–8:30p.m.</td></tr>
-            </table>
-            <p style="margin-top: 15px;"><strong>Teléfono:</strong> +52 4495536331</p>
-        </div>
-    </div>
-
-    <!-- Legal -->
-    <div class="footer-legal">
-        <!-- Nuevo Botón Story Telling -->
-        <a href="https://youtube.com/shorts/XL6YzkBZqAc?si=fmQhs8YXr0BY4mK_" class="btn-story">STORY TELLING</a>
-        
-        <p>© 2026 Arienzo - WordPress Theme by <a href="#">Kadence WP</a></p>
-        <p><a href="#">TERMINOS Y CONDICIONES</a> | <a href="#">POLITICAS DE PRIVACIDAD</a></p>
-        <p><a href="#">UN POCO MAS DE NUESTROS PROCESOS</a></p>
-    </div>
-</footer>
-
-<style>
-    .footer-arienzo { padding: 50px 8%; background-color: #fff; border-top: 2px solid #f5f0e1; }
-    .social-icons { display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; }
-    .footer-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-    .hours-table { width: 100%; border-collapse: collapse; }
-    .hours-table td { border: 1px solid #ddd; padding: 10px; }
-    .footer-legal { text-align: center; margin-top: 40px; font-size: 0.8rem; color: #666; }
-    .footer-legal a { color: #8d6e63; text-decoration: none; }
-    
-    /* Estilo del botón Story Telling */
-    .btn-story { 
-        display: inline-block; 
-        padding: 10px 20px; 
-        background-color: #d4af37; 
-        color: white !important; 
-        font-weight: bold; 
-        margin-bottom: 20px; 
-        border-radius: 4px;
-    }
-</style>
 </html>
