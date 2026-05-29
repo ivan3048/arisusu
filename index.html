@@ -264,12 +264,12 @@
 
     <div class="footer-content">
         <!-- Mapa -->
-       <div class="map-section">
-    <a href="https://maps.app.goo.gl/dLizQHdKbsstwTkk7" target="_blank">
-        <img src="mapa.png" alt="Mapa de ubicación" style="width: 100%; border: 1px solid #ddd; display: block;">
-    </a>
-    <p>Ven a visitarnos!</p>
-</div>
+        <div class="map-section">
+            <a href="https://maps.app.goo.gl/dLizQHdKbsstwTkk7" target="_blank">
+                <img src="mapa.png" alt="Mapa de ubicación" style="width: 100%; border: 1px solid #ddd; display: block;">
+            </a>
+            <p>Ven a visitarnos!</p>
+        </div>
 
         <!-- Horarios y Contacto -->
         <div class="info-section">
@@ -283,8 +283,11 @@
 
     <!-- Legal -->
     <div class="footer-legal">
-        <!-- Nuevo Botón Story Telling -->
-        <a href="https://youtube.com/shorts/XL6YzkBZqAc?si=fmQhs8YXr0BY4mK_" class="btn-story">STORY TELLING</a>
+        <!-- Botones de Acción -->
+        <div style="margin-bottom: 20px;">
+            <a href="https://youtube.com/shorts/XL6YzkBZqAc?si=fmQhs8YXr0BY4mK_" class="btn-footer">STORY TELLING</a>
+            <a href="autores.html" class="btn-footer">AUTORES</a>
+        </div>
         
         <p>© 2026 Arienzo - WordPress Theme by <a href="#">Kadence WP</a></p>
         <p><a href="#">TERMINOS Y CONDICIONES</a> | <a href="#">POLITICAS DE PRIVACIDAD</a></p>
@@ -301,15 +304,17 @@
     .footer-legal { text-align: center; margin-top: 40px; font-size: 0.8rem; color: #666; }
     .footer-legal a { color: #8d6e63; text-decoration: none; }
     
-    /* Estilo del botón Story Telling */
-    .btn-story { 
+    /* Estilo unificado para botones */
+    .btn-footer { 
         display: inline-block; 
         padding: 10px 20px; 
         background-color: #d4af37; 
         color: white !important; 
         font-weight: bold; 
-        margin-bottom: 20px; 
         border-radius: 4px;
+        margin: 0 5px;
+        text-decoration: none;
     }
+    .btn-footer:hover { background-color: #b8962d; }
 </style>
 </html>
