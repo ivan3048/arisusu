@@ -67,7 +67,6 @@
     .carousel-item { width: 100%; }
     .carousel-item img { width: 100%; display: block; height: 400px; object-fit: cover; }
 
-    /* Estilos para los nuevos botones */
     .nav-btn {
         position: absolute;
         top: 50%;
@@ -94,7 +93,6 @@
         </div>
     </div>
     
-    <!-- Botones añadidos -->
     <button class="nav-btn prev" onclick="moveCarousel(-1)">❮</button>
     <button class="nav-btn next" onclick="moveCarousel(1)">❯</button>
 </div>
@@ -104,10 +102,16 @@
     const inner = document.getElementById('inner');
 
     function moveCarousel(direction) {
-        // Alterna entre 0 y 1
+        // Cambia el índice: si es 0 pasa a 1, si es 1 pasa a 0
         currentIndex = (currentIndex === 0) ? 1 : 0;
         inner.style.transform = `translateX(-${currentIndex * 50}%)`;
     }
+
+    // Cambio automático cada 4 segundos (4000 milisegundos)
+    setInterval(() => {
+        moveCarousel(1);
+    }, 4000);
+</script>
 </script>
 <<!-- Sección: Los más vendidos -->
 <section class="best-sellers">
@@ -286,7 +290,7 @@
         <!-- Botones de Acción -->
         <div style="margin-bottom: 20px;">
             <a href="https://youtube.com/shorts/XL6YzkBZqAc?si=fmQhs8YXr0BY4mK_" class="btn-footer">STORY TELLING</a>
-            <a href="colaboradores.html" class="btn-footer">AUTORES</a>
+            <a href="autores.html" class="btn-footer">AUTORES</a>
         </div>
         
         <p>© 2026 Arienzo - WordPress Theme by <a href="#">Kadence WP</a></p>
