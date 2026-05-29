@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Limonada electrica
+ - Arienzo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        
+        /* Header Arienzo */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fff; border-bottom: 1px solid #eee; position: relative; }
+        .logo { font-weight: bold; font-size: 1.5rem; color: #333; }
+        
+        /* Botón de menú */
+        .menu-btn { cursor: pointer; font-size: 1.8rem; font-weight: bold; }
+
+        /* Sidebar */
+        .sidebar { height: 100%; width: 0; position: fixed; z-index: 100; top: 0; right: 0; background: #fff; overflow-x: hidden; transition: 0.3s; border-left: 1px solid #eee; padding-top: 60px; box-shadow: -2px 0 5px rgba(0,0,0,0.1); }
+        .sidebar .close-btn { position: absolute; top: 20px; left: 20px; font-size: 2rem; cursor: pointer; color: #333; }
+        .sidebar a { display: block; padding: 20px 40px; text-decoration: none; color: #333; font-size: 1.2rem; transition: 0.2s; }
+        .sidebar a:hover { background: #f9f9f9; }
+
+        /* Estilos página producto */
+        .product-page { display: flex; padding: 50px 8%; gap: 50px; }
+        .gallery { flex: 1; }
+        .main-image { width: 100%; border: 1px solid #ddd; margin-bottom: 15px; }
+        .thumbnails { display: flex; gap: 10px; }
+        .thumbnails img { width: 80px; height: 80px; cursor: pointer; border: 1px solid #ddd; }
+        
+        .product-info { flex: 1; }
+        .product-info h1 { font-size: 2.5rem; color: #333; margin-bottom: 10px; }
+        .price { font-size: 1.5rem; color: #333; margin-bottom: 20px; }
+        .description { line-height: 1.6; color: #555; margin-bottom: 30px; }
+        
+        .cart-form { display: flex; gap: 10px; align-items: center; }
+        .qty-input { width: 50px; padding: 10px; border: 1px solid #ddd; }
+        .btn-add-cart { padding: 10px 20px; background: #d4af37; color: white; border: none; cursor: pointer; font-weight: bold; }
+        .btn-add-cart:hover { background-color: #b8962f; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Arienzo</div>
+    <div class="menu-btn" onclick="openSidebar()">☰</div>
+</header>
+
+<div id="sidebar" class="sidebar">
+    <div class="close-btn" onclick="closeSidebar()">&times;</div>
+    <a href="index.html">INICIO</a>
+    <a href="carrito.html">Carrito</a>
+</div>
+
+<main class="product-page">
+    <div class="gallery">
+        <img src="electrica.jpg" alt="Limonada electrica" class="main-image">
+        <div class="thumbnails">
+            <img src="electrica2.jpg" alt="Vista 1">
+            <img src="electrica3.png" alt="Vista 2">
+        </div>
+    </div>
+
+    <div class="product-info">
+        <h1>Limonada electrica</h1>
+        <p class="price">$40.00</p>
+        <p class="description">
+            Una bebida refrescante y llena de sabor, hecha con ingredientes naturales y un toque de electricidad.
+        </p>
+        
+        <div class="cart-form">
+            <input type="number" value="1" min="1" class="qty-input" id="cantidad">
+            <button class="btn-add-cart" id="btn-add" data-nombre="Limonada electrica" data-precio="40.00">Añadir al carrito</button>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #888;">Categorías: pan, postres individuales</p>
+    </div>
+</main>
+
+<script>
+    function openSidebar() { document.getElementById("sidebar").style.width = "250px"; }
+    function closeSidebar() { document.getElementById("sidebar").style.width = "0"; }
+
+    document.getElementById('btn-add').addEventListener('click', function() {
+        const nombre = this.getAttribute('data-nombre');
+        const precio = this.getAttribute('data-precio');
+        const cantidad = document.getElementById('cantidad').value;
+
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.push({ nombre, precio, cantidad });
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+
+        alert(nombre + " ha sido añadido al carrito (" + cantidad + " unidad/es).");
+    });
+</script>
+
+</body>
+</html>
