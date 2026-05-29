@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sodas - Arienzo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        
+        /* Header Arienzo */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #f2f0eb; }
+        .logo { font-weight: bold; font-size: 1.5rem; color: #5d4037; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; }
+
+        /* Contenedor principal */
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; }
+        h1 { text-align: center; margin-bottom: 40px; color: #333; }
+        
+        /* Grid de Sodas */
+        .sodas-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; 
+            justify-content: center;
+        }
+        
+        .soda-card { border: 1px solid #eee; padding: 15px; text-align: center; border-radius: 8px; background: white; }
+        .soda-card img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; border-radius: 4px; }
+        .nombre { font-weight: bold; margin-bottom: 5px; display: block; font-size: 1.1rem; }
+        .precio { color: #555; margin-bottom: 15px; display: block; font-size: 1rem; }
+        
+        .btn-view { 
+            display: block; background: #d4af37; color: white; text-decoration: none; 
+            padding: 12px; width: 100%; border-radius: 4px; text-align: center; 
+            font-weight: bold; font-size: 0.9rem;
+        }
+
+        /* Footer Arienzo */
+        footer { background-color: #5d4037; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Arienzo</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">INICIO</a>
+            <a href="postres.html" class="nav-link">POSTRES</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Nuestras Sodas</h1>
+        
+        <div class="sodas-grid">
+            <div class="soda-card">
+                <img src="soda1.jpg" alt="Limonada electrica">
+                <span class="nombre">Limonada electrica</span>
+                <span class="precio">$40.00</span>
+                <a href="limonada.html" class="btn-view">Ver producto</a>
+            </div>
+            
+            <div class="soda-card">
+                <img src="electrica.jpg" alt="Soda italiana">
+                <span class="nombre">Soda italiana</span>
+                <span class="precio">$55.00</span>
+                <a href="soda.html" class="btn-view">Ver producto</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Arienzo - Endulzando tus momentos</p>
+    </footer>
+
+</body>
+</html>

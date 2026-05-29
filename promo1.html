@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Postres Individuales - Arienzo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        
+        /* Header Arienzo */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #f2f0eb; }
+        .logo { font-weight: bold; font-size: 1.5rem; color: #5d4037; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; }
+
+        /* Contenedor principal */
+        .container { max-width: 1000px; margin: 40px auto; padding: 20px; }
+        h1 { text-align: center; margin-bottom: 40px; color: #333; }
+        
+        /* Grid de 5 productos */
+        .postres-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 25px; }
+        
+        .producto-card { border: 1px solid #eee; padding: 15px; text-align: center; border-radius: 8px; background: white; }
+        .producto-card img { width: 100%; height: 160px; object-fit: cover; margin-bottom: 10px; border-radius: 4px; }
+        .nombre { font-weight: bold; margin-bottom: 5px; display: block; font-size: 0.95rem; }
+        .precio { color: #555; margin-bottom: 15px; display: block; font-size: 0.9rem; }
+        
+        /* Botón Ver Producto */
+        .btn-view { 
+            display: block; background: #d4af37; color: white; text-decoration: none; 
+            padding: 10px; width: 100%; border-radius: 4px; text-align: center; 
+            font-weight: bold; font-size: 0.9rem;
+        }
+
+        /* Footer Arienzo */
+        footer { background-color: #5d4037; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Arienzo</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">INICIO</a>
+           
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Postres Individuales</h1>
+        
+        <div class="postres-grid">
+            <div class="producto-card">
+                <img src="conchaprod.jpg" alt="Concha rellena">
+                <span class="nombre">Concha rellena</span>
+                <span class="precio">$65.00</span>
+                <a href="producto1.html" class="btn-view">Ver producto</a>
+            </div>
+            <div class="producto-card">
+                <img src="fresa3.jpg" alt="Fresas con chocolate">
+                <span class="nombre">Fresas con chocolate</span>
+                <span class="precio">$50.00</span>
+                <a href="fresas.html" class="btn-view">Ver producto</a>
+            </div>
+            <div class="producto-card">
+                <img src="macarrones.png" alt="Macarrones">
+                <span class="nombre">Macarrones</span>
+                <span class="precio">$25.00</span>
+                <a href="macarrones.html" class="btn-view">Ver producto</a>
+            </div>
+            <div class="producto-card">
+                <img src="red.png" alt="Red Velvet Cupcake">
+                <span class="nombre">Red Velvet Cupcake</span>
+                <span class="precio">$45.00</span>
+                <a href="red.html" class="btn-view">Ver producto</a>
+            </div>
+            <div class="producto-card">
+                <img src="tartaleta.png" alt="Tartaleta de fresa">
+                <span class="nombre">Tartaleta de fresa</span>
+                <span class="precio">$40.00</span>
+                <a href="tartaleta.html" class="btn-view">Ver producto</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Arienzo - Endulzando tus momentos</p>
+    </footer>
+
+</body>
+</html>

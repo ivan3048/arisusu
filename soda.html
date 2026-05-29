@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Soda Italiana - Arienzo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #f2f0eb; }
+        .logo { font-weight: bold; font-size: 1.5rem; color: #5d4037; }
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-link { text-decoration: none; color: #333; font-size: 0.9rem; }
+
+        .product-container { max-width: 900px; margin: 40px auto; padding: 20px; display: flex; gap: 40px; }
+        .img-box { flex: 1; }
+        .img-box img { width: 100%; border-radius: 8px; transition: 0.3s; }
+        .info-box { flex: 1; }
+        .price { font-size: 1.5rem; margin: 10px 0; color: #333; }
+        
+        .variations { margin: 20px 0; }
+        .variation-select { padding: 10px; width: 100%; margin-top: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .btn-cart { background: #d4af37; color: white; border: none; padding: 15px; width: 100%; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        footer { background-color: #5d4037; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Arienzo</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">INICIO</a>
+           
+        </nav>
+    </header>
+
+    <div class="product-container">
+        <div class="img-box">
+            <!-- Imagen principal que cambiará -->
+            <img id="mainImage" src="soda_italiana.jpg" alt="Soda Italiana">
+        </div>
+
+        <div class="info-box">
+            <h1>Soda italiana</h1>
+            <p class="price">$55.00</p>
+            <p>El equilibrio perfecto entre burbujas y sabor frutal.</p>
+
+            <div class="variations">
+                <label for="sabor">Selecciona tu sabor:</label>
+                <select id="sabor" class="variation-select" onchange="changeImage()">
+                    <option value="sodas.jpg">Clásica</option>
+                    <option value="rojo.png">Frutos Rojos</option>
+                    <option value="mango.png">Mango</option>
+                </select>
+            </div>
+
+            <button class="btn-cart">Añadir al carrito</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Arienzo - Endulzando tus momentos</p>
+    </footer>
+
+    <script>
+        function changeImage() {
+            const select = document.getElementById('sabor');
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = select.value;
+        }
+    </script>
+</body>
+</html>
