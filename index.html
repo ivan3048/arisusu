@@ -38,10 +38,41 @@
 </head>
 <body>
 
+<div class="school-bar">PROYECTO ESCOLAR</div>
+
 <header>
-    <div class="logo">Arienzo   PROYECTO ESCOLAR</div>
+    <div class="logo">Arienzo</div>
     <div class="menu-btn" onclick="openSidebar()">☰</div>
 </header>
+
+<style>
+    /* Estilo de la nueva barra */
+    .school-bar {
+        background-color: #333; /* Color oscuro para contraste */
+        color: #d4af37;        /* Color dorado para que combine con Arienzo */
+        text-align: center;
+        padding: 15px 0;
+        font-size: 1.8rem;      /* Letra más grande */
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    /* Ajuste para que el header siga viéndose bien */
+    header { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 20px 8%; 
+        background: #fff; 
+        border-bottom: 1px solid #eee; 
+        position: relative; 
+    }
+    .logo { font-weight: bold; font-size: 1.5rem; color: #333; }
+    .menu-btn { cursor: pointer; font-size: 1.8rem; font-weight: bold; }
+    
+    /* ... resto de tus estilos ... */
+</style>
 
 <div id="sidebar" class="sidebar">
     <div class="close-btn" onclick="closeSidebar()">&times;</div>
@@ -290,7 +321,7 @@
         <!-- Botones de Acción -->
         <div style="margin-bottom: 20px;">
             <a href="https://youtube.com/shorts/XL6YzkBZqAc?si=fmQhs8YXr0BY4mK_" class="btn-footer">STORY TELLING</a>
-            <a href="autores.html" class="btn-footer">AUTORES</a>
+            <a href="colaboradores.html" class="btn-footer">AUTORES</a>
         </div>
         
         <p>© 2026 Arienzo - WordPress Theme by <a href="#">Kadence WP</a></p>
