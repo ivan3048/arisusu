@@ -2,125 +2,619 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arienzo - Pastelería y Cafetería</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        
-        /* Header Arienzo */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: #fff; border-bottom: 1px solid #eee; position: relative; }
-        .logo { font-weight: bold; font-size: 1.5rem; color: #333; }
-        
-        /* Botón de menú hamburguesa */
-        .menu-btn { cursor: pointer; font-size: 1.8rem; font-weight: bold; }
+        /* Reset y Variables Globales */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        :root {
+            --oro: #d4af37;
+            --oro-dark: #b8962f;
+            --chocolate: #3e2723;
+            --chocolate-light: #5d4037;
+            --crema: #fdfbf7;
+            --crema-oscura: #f5f0e1;
+            --texto-oscuro: #2d2d2d;
+            --blanco: #ffffff;
+            --shadow: 0 8px 24px rgba(0,0,0,0.06);
+            --transition: all 0.3s ease;
+        }
+
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--crema);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Barra de Proyecto Escolar */
+        .school-bar {
+            background-color: var(--chocolate);
+            color: var(--oro);
+            text-align: center;
+            padding: 12px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--oro);
+        }
+
+        /* Header Premium */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 8%; 
+            background: var(--blanco); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        .logo { 
+            font-weight: 900; 
+            font-size: 2.2rem; 
+            color: var(--chocolate); 
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: var(--oro);
+        }
+        .menu-btn { 
+            cursor: pointer; 
+            font-size: 1.8rem; 
+            color: var(--chocolate);
+            transition: var(--transition);
+        }
+        .menu-btn:hover {
+            color: var(--oro);
+        }
 
         /* Barra lateral (Sidebar) */
-        .sidebar { height: 100%; width: 0; position: fixed; z-index: 100; top: 0; right: 0; background: #fff; overflow-x: hidden; transition: 0.3s; border-left: 1px solid #eee; padding-top: 60px; box-shadow: -2px 0 5px rgba(0,0,0,0.1); }
-        .sidebar .close-btn { position: absolute; top: 20px; left: 20px; font-size: 2rem; cursor: pointer; color: #333; }
-        .sidebar a { display: block; padding: 20px 40px; text-decoration: none; color: #333; font-size: 1.2rem; transition: 0.2s; }
-        .sidebar a:hover { background: #f9f9f9; }
+        .sidebar { 
+            height: 100%; 
+            width: 0; 
+            position: fixed; 
+            z-index: 100; 
+            top: 0; 
+            right: 0; 
+            background: var(--chocolate); 
+            overflow-x: hidden; 
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            padding-top: 80px; 
+            box-shadow: -5px 0 25px rgba(0,0,0,0.2); 
+        }
+        .sidebar .close-btn { 
+            position: absolute; 
+            top: 25px; 
+            right: 30px; 
+            font-size: 2.5rem; 
+            cursor: pointer; 
+            color: var(--oro); 
+        }
+        .sidebar a { 
+            display: block; 
+            padding: 15px 40px; 
+            text-decoration: none; 
+            color: var(--blanco); 
+            font-size: 1.2rem; 
+            letter-spacing: 2px;
+            transition: var(--transition); 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .sidebar a:hover { 
+            background: rgba(255,255,255,0.05); 
+            color: var(--oro);
+            padding-left: 50px;
+        }
 
-        /* Hero */
-        .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('fondo.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 10%; }
-        .hero-tag { background: #d4af37; padding: 5px 10px; font-size: 0.8rem; margin-bottom: 15px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
-        .btn-catalogo { padding: 15px 40px; background: #d4af37; color: white; border: none; cursor: pointer; font-weight: bold; }
+        /* Hero Principal */
+        .hero { 
+            height: 75vh; 
+            background: linear-gradient(rgba(46, 34, 27, 0.45), rgba(46, 34, 27, 0.65)), url('fondo.jpg') no-repeat center center/cover; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            color: white; 
+            text-align: center; 
+            padding: 0 10%; 
+        }
+        .hero-tag { 
+            background: var(--oro); 
+            color: var(--chocolate);
+            padding: 6px 16px; 
+            font-size: 0.85rem; 
+            font-weight: 600;
+            margin-bottom: 20px; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+        }
+        .hero h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 25px; 
+            max-width: 800px;
+            font-weight: 700;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
 
-        /* Promoción */
-        .promo-banner { background-color: #f5f0e1; padding: 40px 8%; color: #333; display: flex; justify-content: space-between; align-items: center; }
+        /* Nueva Sección Elegante: Misión y Visión */
+        .mision-vision-section {
+            padding: 80px 8%;
+            background-color: var(--blanco);
+        }
+        .mv-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .mv-image-wrapper {
+            position: relative;
+            text-align: center;
+        }
+        .mv-image-wrapper img {
+            width: 85%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(62, 39, 35, 0.15);
+            border: 8px solid var(--crema-oscura);
+        }
+        .mv-content {
+            padding-right: 20px;
+        }
+        .mv-box {
+            margin-bottom: 35px;
+        }
+        .mv-box h2 {
+            font-size: 2.2rem;
+            color: var(--chocolate);
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
+        }
+        .mv-box h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--oro);
+            margin-top: 5px;
+        }
+        .mv-box p {
+            color: #555;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
 
-        /* Carrusel 60vh */
-        .full-hero-slider { height: 60vh; position: relative; overflow: hidden; }
-        .slide { height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; opacity: 0; transition: opacity 1s ease-in-out; padding: 0 10%; }
-        .slide.active { opacity: 1; }
-        .slide h1 { font-size: 2.5rem; margin-bottom: 15px; }
-        .prev, .next { position: absolute; top: 50%; background: rgba(255,255,255,0.2); color: white; border: none; padding: 15px; cursor: pointer; z-index: 2; }
-        .prev { left: 20px; } .next { right: 20px; }
+        /* Carrusel de 4 Imágenes Adaptado */
+        .lumi-carousel { 
+            position: relative; 
+            max-width: 1200px; 
+            margin: 60px auto; 
+            overflow: hidden; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08); 
+        }
+        .carousel-inner { 
+            display: flex; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+            width: 400%; 
+        }
+        .carousel-item { 
+            width: 25%; 
+            position: relative;
+        }
+        .carousel-item img { 
+            width: 100%; 
+            display: block; 
+            height: 480px; 
+            object-fit: cover; 
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--chocolate);
+            border: none;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-btn:hover {
+            background: var(--oro);
+            color: var(--blanco);
+        }
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        /* Sección: Los más vendidos */
+        .best-sellers { 
+            padding: 80px 8%; 
+            background-color: var(--blanco); 
+            text-align: center; 
+        }
+        .best-sellers h2 { 
+            margin-bottom: 45px; 
+            color: var(--chocolate); 
+            font-size: 2.6rem; 
+            position: relative;
+        }
+        .best-sellers h2::after {
+            content: '♦';
+            display: block;
+            font-size: 1rem;
+            color: var(--oro);
+            margin-top: 5px;
+        }
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 25px; 
+        }
+        .product-card { 
+            background: var(--blanco);
+            border: 1px solid #f0edf8; 
+            padding: 20px; 
+            text-align: center; 
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(62,39,35,0.08);
+            border-color: var(--crema-oscura);
+        }
+        .product-card img { 
+            width: 100%; 
+            height: 240px; 
+            object-fit: cover; 
+            margin-bottom: 20px; 
+            border-radius: 8px;
+        }
+        .product-card h3 { 
+            margin-bottom: 8px; 
+            font-size: 1.3rem; 
+            color: var(--chocolate);
+        }
+        .product-card p {
+            color: var(--oro-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn-view { 
+            padding: 12px 20px; 
+            border: none; 
+            cursor: pointer; 
+            background-color: var(--oro); 
+            color: var(--blanco); 
+            font-weight: bold; 
+            width: 100%;
+            border-radius: 6px;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .btn-view:hover { 
+            background-color: var(--oro-dark); 
+        }
+
+        /* Sección Categorías Modernizada */
+        .categories-section { 
+            padding: 60px 8%; 
+            background-color: var(--chocolate); 
+            text-align: center;
+        }
+        .categories-section h2 {
+            color: var(--blanco);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+        .categories-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 30px; 
+        }
+        .category-item { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        .icon-box { 
+            background-color: var(--chocolate-light); 
+            padding: 20px; 
+            border-radius: 50%; 
+            width: 130px; 
+            height: 130px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        .category-item:hover .icon-box {
+            transform: scale(1.05);
+            border-color: var(--oro);
+        }
+        .icon-box img { 
+            width: 70px; 
+            height: 70px;
+            object-fit: contain;
+        }
+        .btn-category { 
+            padding: 10px 24px; 
+            background-color: var(--oro); 
+            color: var(--chocolate); 
+            border: none; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .btn-category:hover {
+            background-color: var(--blanco);
+            color: var(--chocolate);
+        }
+
+        /* Sección Del Horno a tu Mesa */
+        .oven-to-table { 
+            padding: 80px 8%; 
+            background-color: var(--crema-oscura); 
+            text-align: center;
+        }
+        .section-title { 
+            margin-bottom: 45px; 
+            color: var(--chocolate); 
+            font-size: 2.4rem; 
+        }
+        .product-grid-2x2 { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 30px; 
+        }
+        .product-card-large { 
+            background: var(--blanco); 
+            padding: 25px; 
+            text-align: center; 
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .product-card-large:hover {
+            transform: translateY(-5px);
+        }
+        .product-card-large img { 
+            width: 100%; 
+            height: 280px; 
+            object-fit: cover; 
+            margin-bottom: 15px; 
+            border-radius: 10px;
+        }
+        .product-card-large h3 {
+            font-size: 1.4rem;
+            color: var(--chocolate);
+            margin-bottom: 5px;
+        }
+        .product-card-large p {
+            color: var(--oro-dark);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Pie de página Estilizado y Ajustado */
+        .footer-arienzo { 
+            padding: 60px 8% 30px 8%; 
+            background-color: var(--blanco); 
+            border-top: 1px solid #f0edf8; 
+        }
+        .social-icons { 
+            display: flex; 
+            gap: 15px; 
+            justify-content: center; 
+            margin-bottom: 35px; 
+        }
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--crema-oscura);
+            color: var(--chocolate);
+            text-decoration: none;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        .social-icons a fill {
+            transition: var(--transition);
+        }
+        .social-icons a:hover {
+            background-color: var(--oro);
+            transform: scale(1.1);
+        }
+        .social-icons a:hover svg {
+            fill: var(--blanco);
+        }
+        .footer-content { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 50px; 
+            align-items: start; 
+            max-width: 1100px;
+            margin: 0 auto 30px auto;
+        }
+        .map-section img {
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .map-section img:hover {
+            opacity: 0.95;
+        }
+        .map-section p {
+            margin-top: 10px;
+            font-weight: 600;
+            color: var(--chocolate);
+            text-align: center;
+        }
+        .hours-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            background: var(--crema);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+        }
+        .hours-table td { 
+            border: 1px solid #f0edf8; 
+            padding: 14px 20px; 
+            color: #555;
+        }
+        .hours-table tr td:first-child {
+            font-weight: 600;
+            color: var(--chocolate);
+        }
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .info-section p {
+            font-size: 1.1rem;
+            color: var(--texto-oscuro);
+        }
+        .footer-buttons {
+            text-align: center;
+            margin-top: 30px;
+            width: 100%;
+        }
+        .footer-legal { 
+            text-align: center; 
+            margin-top: 20px; 
+            font-size: 0.85rem; 
+            color: #777; 
+            border-top: 1px solid #f0edf8;
+            padding-top: 25px;
+        }
+        .btn-footer { 
+            display: inline-block; 
+            padding: 10px 24px; 
+            background-color: var(--chocolate); 
+            color: var(--oro) !important; 
+            font-weight: bold; 
+            border-radius: 30px;
+            margin: 0 8px 10px 8px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 1px solid var(--oro);
+        }
+        .btn-footer:hover { 
+            background-color: var(--oro); 
+            color: var(--chocolate) !important;
+        }
+
+        /* Responsivo Simple */
+        @media (max-width: 900px) {
+            .product-grid, .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .mv-container, .footer-content, .product-grid-2x2 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2.3rem; }
+        }
     </style>
 </head>
 <body>
 
-<div class="school-bar">PROYECTO ESCOLAR</div>
+<div class="school-bar">Proyecto Escolar</div>
 
 <header>
-    <div class="logo">Arienzo</div>
+    <div class="logo">Arienzo<span>.</span></div>
     <div class="menu-btn" onclick="openSidebar()">☰</div>
 </header>
 
-<style>
-    /* Estilo de la nueva barra */
-    .school-bar {
-        background-color: #333; /* Color oscuro para contraste */
-        color: #d4af37;        /* Color dorado para que combine con Arienzo */
-        text-align: center;
-        padding: 15px 0;
-        font-size: 1.8rem;      /* Letra más grande */
-        font-weight: bold;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-    }
-
-    /* Ajuste para que el header siga viéndose bien */
-    header { 
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        padding: 20px 8%; 
-        background: #fff; 
-        border-bottom: 1px solid #eee; 
-        position: relative; 
-    }
-    .logo { font-weight: bold; font-size: 1.5rem; color: #333; }
-    .menu-btn { cursor: pointer; font-size: 1.8rem; font-weight: bold; }
-    
-    /* ... resto de tus estilos ... */
-</style>
-
 <div id="sidebar" class="sidebar">
-    <div class="close-btn" onclick="closeSidebar()">&times;</div>
+    <div class="close-btn" onclick="closeSidebar()">×</div>
     <a href="index.html">INICIO</a>
-    <a href="carrito.html">Carrito</a>
+    <a href="carrito.html">CARRITO</a>
 </div>
 
 <section class="hero">
-    <div class="hero-tag">ENDULZANDO TUS MOMENTOS DESDE 2010</div>
-    <h1>El Placer De Compartir Un Postre Inolvidable.</h1>
+    <div class="hero-tag">Endulzando tus momentos desde 2010</div>
+    <h1>El placer de compartir un postre inolvidable.</h1>
 </section>
 
-<script>
-    function openSidebar() { document.getElementById("sidebar").style.width = "250px"; }
-    function closeSidebar() { document.getElementById("sidebar").style.width = "0"; }
-</script>
-
-</body>
-</html>
-<style>
-    .lumi-carousel { position: relative; max-width: 1000px; margin: 40px auto; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-    .carousel-inner { display: flex; transition: transform 0.5s ease-in-out; width: 200%; }
-    .carousel-item { width: 100%; }
-    .carousel-item img { width: 100%; display: block; height: 400px; object-fit: cover; }
-
-    .nav-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.7);
-        border: none;
-        padding: 15px;
-        cursor: pointer;
-        font-size: 1.5rem;
-        z-index: 10;
-        border-radius: 50%;
-    }
-    .prev { left: 10px; }
-    .next { right: 10px; }
-</style>
+<section class="mision-vision-section">
+    <div class="mv-container">
+        <div class="mv-image-wrapper">
+            <img src="logo.png" alt="Logotipo Arienzo" onerror="this.src='https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=500&auto=format&fit=cover'">
+        </div>
+        <div class="mv-content">
+            <div class="mv-box">
+                <h2>Nuestra Misión</h2>
+                <p>En Arienzo, fusionamos el arte de la repostería artesanal con la calidez de una taza de café perfecta. Nuestra misión es crear experiencias multisensoriales que transformen los momentos cotidianos en recuerdos inolvidables, utilizando ingredientes locales de la más alta calidad y un servicio que abraza a cada cliente.</p>
+            </div>
+            <div class="mv-box">
+                <h2>Nuestra Visión</h2>
+                <p>Consolidarnos como la pastelería y cafetería de especialidad referente en la región, reconocida por nuestra constante innovación gastronomífica, estética impecable y el firme compromiso de endulzar los corazones de nuestras familias, manteniendo siempre la esencia y amor por el detalle artesanal.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="lumi-carousel">
     <div class="carousel-inner" id="inner">
         <div class="carousel-item">
-            <a href="promo1.html"><img src="1.png" alt="Promo 1"></a>
+            <a href="promo1.html">
+                <img src="1.png" alt="Promo 1">
+            </a>
         </div>
         <div class="carousel-item">
-            <a href="promo2.html"><img src="2.png" alt="Promo 2"></a>
+            <a href="promo2.html">
+                <img src="2.png" alt="Promo 2">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="https://www.facebook.com/arienzopasteleriaycafeteria/">
+                <img src="3.png" alt="Promo 3">
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a href="https://maps.app.goo.gl/GXL3vYLa9dt3XDrd6">
+                <img src="4.png" alt="Promo 4">
+            </a>
         </div>
     </div>
     
@@ -128,50 +622,29 @@
     <button class="nav-btn next" onclick="moveCarousel(1)">❯</button>
 </div>
 
-<script>
-    let currentIndex = 0;
-    const inner = document.getElementById('inner');
-
-    function moveCarousel(direction) {
-        // Cambia el índice: si es 0 pasa a 1, si es 1 pasa a 0
-        currentIndex = (currentIndex === 0) ? 1 : 0;
-        inner.style.transform = `translateX(-${currentIndex * 50}%)`;
-    }
-
-    // Cambio automático cada 4 segundos (4000 milisegundos)
-    setInterval(() => {
-        moveCarousel(1);
-    }, 4000);
-</script>
-</script>
-<<!-- Sección: Los más vendidos -->
 <section class="best-sellers">
-    <h2>Los mas vendidos!</h2>
+    <h2>¡Los más vendidos!</h2>
     <div class="product-grid">
-        <!-- Producto 1 -->
         <div class="product-card">
-            <img src="conchaprod.png" alt="Concha rellena">
+            <img src="conchaprod.png" alt="Concha rellena" onerror="this.src='https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=500&auto=format&fit=cover'">
             <h3>Concha rellena</h3>
             <p>$65.00</p>
             <button class="btn-view" onclick="window.location.href='producto1.html'">VER PRODUCTO</button>
         </div>
-        <!-- Producto 2 -->
         <div class="product-card">
-            <img src="mokita.png" alt="Mini mokita">
+            <img src="mokita.png" alt="Mini mokita" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=cover'">
             <h3>Mini mokita</h3>
             <p>$75.00</p>
             <button class="btn-view" onclick="window.location.href='mokita.html'">VER PRODUCTO</button>
         </div>
-        <!-- Producto 3 -->
         <div class="product-card">
-            <img src="panque.png" alt="Panque de nuez">
+            <img src="panque.png" alt="Panque de nuez" onerror="this.src='https://images.unsplash.com/photo-1607958996333-41aef7caefaa?q=80&w=500&auto=format&fit=cover'">
             <h3>Panque de nuez</h3>
             <p>$35.00</p>
             <button class="btn-view" onclick="window.location.href='producto3.html'">VER PRODUCTO</button>
         </div>
-        <!-- Producto 4 -->
         <div class="product-card">
-            <img src="pastelor.jpg" alt="Pastel de Oreo">
+            <img src="pastelor.jpg" alt="Pastel de Oreo" onerror="this.src='https://images.unsplash.com/photo-1535141192574-5d4897c13636?q=80&w=500&auto=format&fit=cover'">
             <h3>Pastel de Oreo</h3>
             <p>$45.00 – $780.00</p>
             <button class="btn-view" onclick="window.location.href='producto4.html'">VER PRODUCTO</button>
@@ -179,177 +652,137 @@
     </div>
 </section>
 
-<style>
-    .best-sellers { padding: 60px 8%; background-color: #fff; text-align: center; }
-    .best-sellers h2 { margin-bottom: 40px; color: #333; font-size: 2rem; }
-    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .product-card { border: 1px solid #eee; padding: 15px; text-align: center; }
-    .product-card img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; }
-    .product-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
-    
-    /* Estilo del nuevo botón */
-    .btn-view { 
-        padding: 10px 20px; border: none; cursor: pointer; 
-        background-color: #d4af37; color: #fff; font-weight: bold; width: 100%;
-        transition: background 0.3s;
-    }
-    .btn-view:hover { background-color: #b8962f; }
-</style>
-
-<style>
-    .best-sellers { padding: 60px 8%; background-color: #fff; text-align: center; }
-    .best-sellers h2 { margin-bottom: 40px; color: #333; font-size: 2rem; }
-    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .product-card { border: 1px solid #eee; padding: 15px; text-align: center; }
-    .product-card img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; }
-    .product-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
-    .btn-add, .btn-options { 
-        padding: 10px 20px; border: none; cursor: pointer; 
-        background-color: #d4af37; color: #fff; font-weight: bold; width: 100%;
-    }
-</style>
-
-<script>
-    let current = 0;
-    const slides = document.querySelectorAll('.slide');
-    function moveSlide(n) {
-        slides[current].classList.remove('active');
-        current = (current + n + slides.length) % slides.length;
-        slides[current].classList.add('active');
-    }
-    setInterval(() => moveSlide(1), 5000);
-
-</script>
-
-<style>
-    .categories-section { padding: 50px 8%; background-color: #3e2723; }
-    .categories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-    .category-item { display: flex; flex-direction: column; align-items: center; gap: 15px; }
-    .icon-box { background-color: #a1887f; padding: 20px; border-radius: 8px; width: 120px; height: 120px; display: flex; justify-content: center; align-items: center; }
-    .icon-box img { width: 80px; }
-    .btn-category { padding: 10px 20px; background-color: #d4af37; color: #fff; border: none; font-weight: bold; cursor: pointer; }
-</style>
-
-<section class="oven-to-table">
-    <h2 class="section-title">Del Horno a tu Mesa</h2>
-    <div class="product-grid-2x2">
-        <!-- Producto 1: Bigote -->
-        <div class="product-card">
-            <img src="bigote.png" alt="Bigote">
-            <h3>Bigote</h3>
-            <p>$30.00</p>
-            <button class="btn-action" onclick="window.location.href='bigote.html'">VER PRODUCTO</button>
+<section class="categories-section">
+    <h2>Nuestras Especialidades</h2>
+    <div class="categories-grid">
+        <div class="category-item">
+            <div class="icon-box"><img src="pastelicon.png" alt="Pastelería" onerror="this.src='https://cdn-icons-png.flaticon.com/512/992/992714.png'"></div>
+            <button class="btn-category">Pasteles</button>
         </div>
-
-        <!-- Producto 2: Concha -->
-        <div class="product-card">
-            <img src="strudell.jpg" alt="Strudll">
-            <h3>Strudell</h3>
-            <p>$30.00</p>
-            <button class="btn-action" onclick="window.location.href='strudell.html'">VER PRODUCTO</button>
+        <div class="category-item">
+            <div class="icon-box"><img src="sodas.png" alt="Cafetería" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3113/3113045.png'"></div>
+            <button class="btn-category">Bebidas</button>
         </div>
-
-        <!-- Producto 3: Concha rellena -->
-        <div class="product-card">
-            <img src="trufas.jpg" alt="Trufa">
-            <h3>Trufa</h3>
-            <p>$65.00</p>
-            <button class="btn-action" onclick="window.location.href='trufa.html'">VER PRODUCTO</button>
+        <div class="category-item">
+            <div class="icon-box"><img src="panicon.png" alt="Panadería" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2821/2821798.png'"></div>
+            <button class="btn-category">Pan Dulce</button>
         </div>
-
-        <!-- Producto 4: Pan de muerto -->
-        <div class="product-card">
-            <img src="panm.png" alt="Pan de muerto">
-            <h3>Pan de muerto</h3>
-            <p>$35.00</p>
-            <button class="btn-action" onclick="window.location.href='panm.html'">VER PRODUCTO</button>
+        <div class="category-item">
+            <div class="icon-box"><img src="gelatinas.png" alt="Gourmet" onerror="this.src='https://cdn-icons-png.flaticon.com/512/763/763815.png'"></div>
+            <button class="btn-category">Postres</button>
         </div>
     </div>
 </section>
 
-<style>
-    .oven-to-table { padding: 50px 8%; background-color: #f5f0e1; }
-    .section-title { margin-bottom: 30px; color: #8d6e63; font-size: 1.8rem; }
-    .product-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .product-card { background: white; padding: 20px; text-align: center; border: 1px solid #ddd; }
-    .product-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px; }
-    .btn-action { 
-        width: 100%; padding: 10px; background-color: #d4af37; 
-        color: white; border: none; font-weight: bold; cursor: pointer;
-        transition: background 0.3s;
-    }
-    .btn-action:hover { background-color: #b8962f; }
-</style>
-<style>
-    .oven-to-table { padding: 50px 8%; background-color: #f5f0e1; /* Color crema de fondo */ }
-    .section-title { margin-bottom: 30px; color: #8d6e63; font-size: 1.8rem; }
-    .product-grid-2x2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .product-card { background: white; padding: 20px; text-align: center; border: 1px solid #ddd; }
-    .product-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 10px; }
-    .btn-action { width: 100%; padding: 10px; background-color: #d4af37; color: white; border: none; font-weight: bold; cursor: pointer; }
-</style>
-</body>
-<!-- Pie de página: Arienzo -->
+<section class="oven-to-table">
+    <h2 class="section-title">Del Horno a tu Mesa</h2>
+    <div class="product-grid-2x2">
+        <div class="product-card-large">
+            <img src="bigote.png" alt="Bigote" onerror="this.src='https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=500&auto=format&fit=cover'">
+            <h3>Bigote Tradicional</h3>
+            <p>$30.00</p>
+            <button class="btn-view" onclick="window.location.href='bigote.html'">VER PRODUCTO</button>
+        </div>
+
+        <div class="product-card-large">
+            <img src="strudell.jpg" alt="Strudell" onerror="this.src='https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=500&auto=format&fit=cover'">
+            <h3>Strudell de Manzana</h3>
+            <p>$30.00</p>
+            <button class="btn-view" onclick="window.location.href='strudell.html'">VER PRODUCTO</button>
+        </div>
+
+        <div class="product-card-large">
+            <img src="trufas.jpg" alt="Trufa" onerror="this.src='https://images.unsplash.com/photo-1544982503-9f984c14501a?q=80&w=500&auto=format&fit=cover'">
+            <h3>Trufa de Chocolate</h3>
+            <p>$65.00</p>
+            <button class="btn-view" onclick="window.location.href='trufa.html'">VER PRODUCTO</button>
+        </div>
+
+        <div class="product-card-large">
+            <img src="panm.png" alt="Pan de muerto" onerror="this.src='https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500&auto=format&fit=cover'">
+            <h3>Pan de Muerto Especial</h3>
+            <p>$35.00</p>
+            <button class="btn-view" onclick="window.location.href='panm.html'">VER PRODUCTO</button>
+        </div>
+    </div>
+</section>
+
 <footer class="footer-arienzo">
-    <!-- Redes Sociales -->
+    <!-- Iconos Rediseñados con SVG Oficiales -->
     <div class="social-icons">
-        <a href="https://www.facebook.com/arienzopasteleriaycafeteria/photos/">FB</a>
-        <a href="https://www.instagram.com/arienzo.pasteleria.cafeteria">IG</a>
+        <a href="https://www.facebook.com/arienzopasteleriaycafeteria/" target="_blank" aria-label="Facebook">
+            <svg width="20" height="20" fill="#3e2723" viewBox="0 0 24 24">
+                <path d="M9 8H7v3h2v9h3v-9h2.72l.42-3H12V6.5A1 1 0 0 1 13 5.5h2V2h-3a4.5 4.5 0 0 0-4.5 4.5z"/>
+            </svg>
+        </a>
+        <a href="https://www.instagram.com/arienzo.pasteleria.cafeteria" target="_blank" aria-label="Instagram">
+            <svg width="20" height="20" fill="#3e2723" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+        </a>
     </div>
 
+    <!-- Contenido Principal Organizado -->
     <div class="footer-content">
-        <!-- Mapa -->
         <div class="map-section">
             <a href="https://maps.app.goo.gl/dLizQHdKbsstwTkk7" target="_blank">
-                <img src="mapa.png" alt="Mapa de ubicación" style="width: 100%; border: 1px solid #ddd; display: block;">
+                <img src="mapa.png" alt="Mapa de ubicación" style="width: 100%; border: 1px solid #ddd; display: block;" onerror="this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=600&auto=format&fit=cover'">
             </a>
-            <p>Ven a visitarnos!</p>
+            <p>¡Ven a visitarnos!</p>
         </div>
 
-        <!-- Horarios y Contacto -->
         <div class="info-section">
             <table class="hours-table">
-                <tr><td>Viernes-Domingo</td><td>11:30a.m.–2:30p.m.</td></tr>
-                <tr><td>Lunes-Jueves</td><td>10a.m.–8:30p.m.</td></tr>
+                <tr><td>Lunes - Jueves</td><td>10:00 a.m. – 8:30 p.m.</td></tr>
+                <tr><td>Viernes - Domingo</td><td>11:30 a.m. – 2:30 p.m.</td></tr>
             </table>
-            <p style="margin-top: 15px;"><strong>Teléfono:</strong> +52 4495536331</p>
+            <p style="margin-top: 25px; text-align: center;"><strong>Teléfono:</strong> +52 449 553 6331</p>
+            
+            <!-- Botones Escolares -->
+            <div class="footer-buttons">
+                <a href="https://youtube.com/shorts/XL6YzkBZqAc?si=fmQhs8YXr0BY4mK_" class="btn-footer" target="_blank">STORYTELLING</a>
+                <a href="colaboradores.html" class="btn-footer">AUTORES</a>
+                      <a href="https://youtu.be/JQujcAAoViA?si=1Kq0U9OLl4E6BmOL" class="btn-footer">Video 2</a>
+            </div>
+            
         </div>
     </div>
 
-    <!-- Legal -->
     <div class="footer-legal">
-        <!-- Botones de Acción -->
-        <div style="margin-bottom: 20px;">
-            <a href="https://youtube.com/shorts/XL6YzkBZqAc?si=fmQhs8YXr0BY4mK_" class="btn-footer">STORY TELLING</a>
-            <a href="colaboradores.html" class="btn-footer">AUTORES</a>
-        </div>
-        
-        <p>© 2026 Arienzo - WordPress Theme by <a href="#">Kadence WP</a></p>
-        <p><a href="#">TERMINOS Y CONDICIONES</a> | <a href="#">POLITICAS DE PRIVACIDAD</a></p>
-        <p><a href="#">UN POCO MAS DE NUESTROS PROCESOS</a></p>
+        <p>&copy; 2026 Arienzo Pastelería y Cafetería. Todos los derechos reservados.</p>
     </div>
 </footer>
 
-<style>
-    .footer-arienzo { padding: 50px 8%; background-color: #fff; border-top: 2px solid #f5f0e1; }
-    .social-icons { display: flex; gap: 15px; justify-content: center; margin-bottom: 30px; }
-    .footer-content { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-    .hours-table { width: 100%; border-collapse: collapse; }
-    .hours-table td { border: 1px solid #ddd; padding: 10px; }
-    .footer-legal { text-align: center; margin-top: 40px; font-size: 0.8rem; color: #666; }
-    .footer-legal a { color: #8d6e63; text-decoration: none; }
-    
-    /* Estilo unificado para botones */
-    .btn-footer { 
-        display: inline-block; 
-        padding: 10px 20px; 
-        background-color: #d4af37; 
-        color: white !important; 
-        font-weight: bold; 
-        border-radius: 4px;
-        margin: 0 5px;
-        text-decoration: none;
+<script>
+    // Controladores de Barra Lateral (Sidebar)
+    function openSidebar() { 
+        document.getElementById("sidebar").style.width = "280px"; 
     }
-    .btn-footer:hover { background-color: #b8962d; }
-</style>
+    function closeSidebar() { 
+        document.getElementById("sidebar").style.width = "0"; 
+    }
+
+    // Funcionalidad del Carrusel Ajustada para 4 diapositivas
+    let currentIndex = 0;
+    const totalSlides = 4;
+    const inner = document.getElementById('inner');
+
+    function moveCarousel(direction) {
+        currentIndex += direction;
+        
+        if (currentIndex >= totalSlides) {
+            currentIndex = 0;
+        } else if (currentIndex < 0) {
+            currentIndex = totalSlides - 1;
+        }
+        
+        inner.style.transform = `translateX(-${currentIndex * 25}%)`;
+    }
+
+    // Rotación automática inteligente cada 4.5 segundos
+    setInterval(() => {
+        moveCarousel(1);
+    }, 4500);
+</script>
+</body>
 </html>
